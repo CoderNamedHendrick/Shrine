@@ -28,6 +28,7 @@ public class LoginFragment extends Fragment {
         final TextInputLayout passwordTextInput = view.findViewById(R.id.password_text_input);
         final TextInputEditText passwordEditText = view.findViewById(R.id.password_edit_text);
         Button nextButton = view.findViewById(R.id.next_button);
+        Button cancelButton = view.findViewById(R.id.cancel_button);
 
         // Set an error if the password is less than 8 characters.
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -51,9 +52,17 @@ public class LoginFragment extends Fragment {
                 return false;
             }
         });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passwordEditText.getText().clear();
+            }
+        });
         // Snippet from "Navigate to the next Fragment" section goes here.
         return view;
     }
+
 
     // "isPasswordValid" from "Navigate to the next Fragment" section method goes here
     private boolean isPasswordValid(@Nullable Editable text){
